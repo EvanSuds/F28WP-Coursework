@@ -1,16 +1,28 @@
 # F28WP-Coursework
 
-Cyber
+## Cyber
 
-Name                              Heriot-Watt Username          GitHub username
-Evan Sutherland                   ess5                          EvanSuds
-Daniel Townson                    djt4                          dantownson4
-Alec Smith                        as380                         ASmithie
-Lewis Inches                      li10                          LewisI224
+### Name                                        
+- Evan Sutherland                                             
+- Daniel Townson                                              
+- Alec Smith                                                 
+- Lewis Inches
 
-This game will incorporate the following features:
+### Heriot-Watt Username
+- @ess5
+- @djt4
+- @as380
+- @li10                          
 
-Login Screen and usernames
-Each user will have a total score, level system and K/D ratio
-Different unlockable classes of tanks with different attributes
-Different levels to play on e.g. Different planets
+### GitHub username
+- EvanSuds
+- dantownson4
+- LewisI224
+- ASmithie
+
+### This game will incorporate the following features:
+
+- [ ] Login Screen and usernames
+- [ ] Each user will have a total score, level system and K/D ratio
+- [ ] Different unlockable classes of tanks with different attributes
+- [ ] Different levels to play on e.g. Different planets
