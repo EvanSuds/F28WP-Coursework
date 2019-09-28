@@ -8,13 +8,13 @@
 - Alec Smith                                                 
 - Lewis Inches
 
-### Heriot-Watt Username
+### GitHub Username
 - @ess5
 - @djt4
 - @as380
-- @li10                          
+- @li10    
 
-### GitHub username
+### Heriot-Watt Username
 - EvanSuds
 - dantownson4
 - LewisI224
