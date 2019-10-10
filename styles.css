@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   background-image: url("Website_Background.jpg");
 }
@@ -6,4 +7,8 @@ body {
   text-align: center;
   color:white;
   font-size:70px;
+=======
+#gameCanvas {
+  background-color: green;
+>>>>>>> bee4c2aebc5547b3eac18cf091597bd39481d603
 }
