@@ -9,11 +9,6 @@ body {
   font-family: 'Oswald', sans-serif;
 }
 
-.usernameForm {
-  text-align: center;
-  color: white;
-}
-<<<<<<< HEAD
 #gameCanvas {
   background-color: green;
   width: 80%;
@@ -21,4 +16,9 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.usernameForm {
+  text-align: center;
+  color: white;
 }
