@@ -8,3 +8,8 @@ body {
   font-size:70px;
   font-family: 'Oswald', sans-serif;
 }
+
+.usernameForm {
+  text-align: center;
+  color: white;
+}
