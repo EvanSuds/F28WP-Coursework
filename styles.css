@@ -1,1 +1,9 @@
-css blah
+body {
+  background-image: url("Website_Background.jpg");
+}
+
+.title {
+  text-align: center;
+  color:white;
+  font-size:70px;
+}
