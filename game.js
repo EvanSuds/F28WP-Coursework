@@ -1,4 +1,5 @@
 var movement = {up:false, down:false, left:false, right:false}
+
 //sets up listener for key press
 document.addEventListener('keydown', function(userinput) {
     switch (userinput.keyCode) {
@@ -18,7 +19,7 @@ document.addEventListener('keydown', function(userinput) {
     }
 });
 
-//sets up listener fpr key lift
+//sets up listener for key lift
 document.addEventListener('keyup', function(userinput) {
     switch (userinput.keyCode) {
         case 65:
