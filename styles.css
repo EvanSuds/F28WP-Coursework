@@ -22,7 +22,7 @@ footer {
   width: 100%;
   height: 2.5rem;
 }
-#gameCanvas {
+canvas {
   background-color: green;
   width: 80%;
   height: 80%;
