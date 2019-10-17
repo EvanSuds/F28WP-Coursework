@@ -41,14 +41,15 @@ canvas {
 }
 
 #gameInfo {
-  width: 50%;
+  width: 25%;
   height: 15%;
 }
 
-#gameUITitle {
+.gameUITitle, #gameScore, #gameKilled {
   color: white;
   font-family: 'Oswald', sans-serif;
   font-size: 32px;
   margin: auto;
-
+  padding-left: 5%;
+  padding-top: 2%;
 }
