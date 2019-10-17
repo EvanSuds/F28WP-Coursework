@@ -1,3 +1,5 @@
+//Declare variables
+//TODO: reduce scope of variables where possible
 var playerTank;
 var up = false;
 var down = false;
@@ -7,8 +9,8 @@ var xpos;
 var ypos;
 
 function startGame() {
-  playerTank = new tank(300,300);
-  gameCanvas.start();
+  playerTank = new tank(300,300); //Create a new tank with starting coordinates of (300,300)
+  gameCanvas.start(); //Call start function on game canvas
 }
 
 var gameCanvas = {
@@ -21,29 +23,27 @@ var gameCanvas = {
     this.interval=setInterval(updateGameCanvas,20); //How often the window refreshes
   },
     clear : function() {
-      this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
+      this.context.clearRect(0,0,this.canvas.width,this.canvas.height); //Redraw the canvas
     }
   }
+
+//Add event listener for key presses
 document.addEventListener("keydown", keyDown);
 
  function keyDown(e){
-   console.log("keyDown function invoked");
+//Assign variable based on which key was pressed
    var keyCode = e.keyCode;
      switch(keyCode) {
        case 65:
-           console.log("Left key pressed");
            xpos = xpos - 4;
            break;
        case 87:
-           console.log("Up key pressed");
            ypos = ypos - 4;
            break;
        case 68:
-           console.log("Right key pressed");
            xpos = xpos + 4;
            break;
        case 83:
-           console.log("Down key pressed");
            ypos = ypos + 4;
            break;
 
@@ -54,16 +54,17 @@ function tank(startxpos,startypos) {
  //TODO: Random spawn positioning
  xpos = startxpos;
  ypos = startypos;
- console.log("Set initial coordinates");
 
-this.update = function() {
+
+//Function to update the tank on the canvas
+  this.update = function() {
     ctx = gameCanvas.context;
+    //Draw tank on canvas using tankBody HTML image element
     ctx.drawImage(document.getElementById("tankBody"), xpos, ypos,120, 120);
 
+  }
 }
-}
-
-
+//Function to clear and redraw the canvas
 function updateGameCanvas() {
     gameCanvas.clear();
     playerTank.update();
