@@ -60,7 +60,9 @@ function tank(startxpos,startypos) {
   this.update = function() {
     ctx = gameCanvas.context;
     //Draw tank on canvas using tankBody HTML image element
+    //TODO: Get tank to rotate, get arm to point at cursor
     ctx.drawImage(document.getElementById("tankBody"), xpos, ypos,120, 120);
+    ctx.drawImage(document.getElementById("tankArm"), xpos + 35 , ypos - 30 ,50, 100);
 
   }
 }
