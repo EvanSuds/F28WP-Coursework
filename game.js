@@ -7,9 +7,7 @@ var xpos;
 var ypos;
 
 function startGame() {
-  var randomColour = function() { return Math.floor(Math.random() * 256);}
-  var tankColour = "rgb(" + randomColour() + "," + randomColour() + "," + randomColour() + ")";
-  playerTank = new tank(tankColour,300,300);
+  playerTank = new tank(300,300);
   gameCanvas.start();
 }
 
@@ -34,25 +32,25 @@ document.addEventListener("keydown", keyDown);
      switch(keyCode) {
        case 65:
            console.log("Left key pressed");
-           xpos = xpos - 2;
+           xpos = xpos - 4;
            break;
        case 87:
            console.log("Up key pressed");
-           ypos = ypos - 2;
+           ypos = ypos - 4;
            break;
        case 68:
            console.log("Right key pressed");
-           xpos = xpos + 2;
+           xpos = xpos + 4;
            break;
        case 83:
            console.log("Down key pressed");
-           ypos = ypos + 2;
+           ypos = ypos + 4;
            break;
 
      }
 }
 //Constructor for the tank
-function tank(colour,startxpos,startypos) {
+function tank(startxpos,startypos) {
  //TODO: Random spawn positioning
  xpos = startxpos;
  ypos = startypos;
@@ -60,8 +58,7 @@ function tank(colour,startxpos,startypos) {
 
 this.update = function() {
     ctx = gameCanvas.context;
-    ctx.fillStyle = colour;
-    ctx.fillRect(xpos,ypos, 60, 60);
+    ctx.drawImage(document.getElementById("tankBody"), xpos, ypos,120, 120);
 
 }
 }
