@@ -23,20 +23,29 @@ var gameCanvas = {
 
 //Constructor for the tank
 function tank(colour) {
+  this.xpos = 100;
+  this.ypos = 100;
+  this.xspeed = 0;
+  this.yspeed = 0;
  //TODO: Random spawn positioning
   this.update = function() {
     ctx = gameCanvas.context;
     ctx.fillStyle = colour;
-    ctx.fillRect(100,100, 60, 60);
+    ctx.fillRect(this.xpos,this.ypos, 60, 60);
+  }
+  this.newPosition = function() {
+    
+    this.xpos += this.xspeed;
+    this.ypos += this.yspeed
   }
 }
 
 function updateGameCanvas() {
-    playerMovement();
+    
+    playerTank.newPosition();
     gameCanvas.clear();
     playerTank.update();
 }
-
 
 var movement = {up:false, down:false, left:false, right:false}
 
@@ -78,19 +87,22 @@ document.addEventListener('keyup', function(userinput) {
             break;
 
     }
+    playerMovement();
 })
 
  function playerMovement() {
+  
    if (movement.left = true) {
-     playerTank.xpos = playerTank.xpos - 1 ;
+     
+     this.xspeed+=1;
    }
    if (movement.up = true) {
-     playerTank.ypos = playerTank.ypos + 1 ;
+      this.yspeed+=1 ;
    }
    if (movement.right = true) {
-     playerTank.xpos = playerTank.xpos + 1 ;
+     this.xspeed-+1  ;
    }
    if (movement.down = true) {
-     playerTank.ypos = playerTank.ypos - 1 ;
+     this.yspeed-=1;
    }
  }
