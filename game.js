@@ -53,8 +53,8 @@ document.addEventListener("keydown", keyDown);
 //Constructor for the tank
 function tank(startxpos,startypos) {
  //TODO: Random spawn positioning
- xpos = startxpos;
- ypos = startypos;
+ xpos = Math.floor(Math.random()*(window.innerWidth-130));
+ ypos = Math.floor(Math.random()*(window.innerHeight-130));
 
 
 //Function to update the tank on the canvas
