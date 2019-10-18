@@ -7,6 +7,7 @@ var left = false;
 var right = false;
 var xpos;
 var ypos;
+var faceDir = 0;
 
 function startGame() {
   playerTank = new tank(300,300); //Create a new tank with starting coordinates of (300,300)
@@ -36,25 +37,28 @@ document.addEventListener("keydown", keyDown);
      switch(keyCode) {
        case 65: //A
            xpos = xpos - 4;
+           faceDir = 0;
            break;
        case 87: //S
            ypos = ypos - 4;
-           
+           faceDir = 180;
            break;
        case 68: //D
            xpos = xpos + 4;
+           faceDir = 270;
            break;
        case 83: //W
            ypos = ypos + 4;
+           faceDir = 234;
            break;
 
      }
 }
 
-// window.addEventListener('mousemove', function(ev) {
-//   mouse[0] = ev.clientX
-//   mouse[1] = ev.clientY
-// })
+//window.addEventListener('mousemove', function(ev) {
+  //mouse[0] = ev.clientX
+  //mouse[1] = ev.clientY
+//})
 //Constructor for the tank
 function tank(startxpos,startypos) {
  xpos = Math.floor(Math.random()*(window.innerWidth-130));
@@ -71,6 +75,11 @@ function tank(startxpos,startypos) {
 
     ctx.drawImage(document.getElementById("tankBody"), xpos, ypos,120, 120);
     ctx.drawImage(document.getElementById("tankArm"), xpos + 35 , ypos - 30 ,50, 100);
+    //ctx.save();
+    //ctx.rotation(Math.PI);
+    //ctx.drawImage(document.getElementById("tankBody"), xpos, ypos,120, 120);
+    //ctx.drawImage(document.getElementById("tankArm"), xpos + 35 , ypos - 30 ,50, 100);
+    
 
   }
 }
