@@ -51,10 +51,10 @@ document.addEventListener("keydown", keyDown);
      }
 }
 
-window.addEventListener('mousemove', function(ev) {
-  mouse[0] = ev.clientX
-  mouse[1] = ev.clientY
-})
+// window.addEventListener('mousemove', function(ev) {
+//   mouse[0] = ev.clientX
+//   mouse[1] = ev.clientY
+// })
 //Constructor for the tank
 function tank(startxpos,startypos) {
  xpos = Math.floor(Math.random()*(window.innerWidth-130));
@@ -67,11 +67,10 @@ function tank(startxpos,startypos) {
     //Draw tank on canvas using tankBody HTML image element
     //TODO: Get tank to rotate, get arm to point at cursor
 
-    var rotation = math.atan2(mouse[0] - xpos, mouse[1] - ypos) * 180 / math.pi;
+    //var rotation = math.atan2(mouse[0] - xpos, mouse[1] - ypos) * 180 / math.pi;
 
     ctx.drawImage(document.getElementById("tankBody"), xpos, ypos,120, 120);
     ctx.drawImage(document.getElementById("tankArm"), xpos + 35 , ypos - 30 ,50, 100);
-    ctx.rotation(rotation);
 
   }
 }
