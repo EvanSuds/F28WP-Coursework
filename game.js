@@ -34,24 +34,28 @@ document.addEventListener("keydown", keyDown);
 //Assign variable based on which key was pressed
    var keyCode = e.keyCode;
      switch(keyCode) {
-       case 65:
+       case 65: //A
            xpos = xpos - 4;
            break;
-       case 87:
+       case 87: //S
            ypos = ypos - 4;
            break;
-       case 68:
+       case 68: //D
            xpos = xpos + 4;
            break;
-       case 83:
+       case 83: //W
            ypos = ypos + 4;
            break;
 
      }
 }
+
+window.addEventListener('mousemove', function(ev) {
+  mouse[0] = ev.clientX
+  mouse[1] = ev.clientY
+})
 //Constructor for the tank
 function tank(startxpos,startypos) {
- //TODO: Random spawn positioning
  xpos = Math.floor(Math.random()*(window.innerWidth-130));
  ypos = Math.floor(Math.random()*(window.innerHeight-130));
 
@@ -61,8 +65,12 @@ function tank(startxpos,startypos) {
     ctx = gameCanvas.context;
     //Draw tank on canvas using tankBody HTML image element
     //TODO: Get tank to rotate, get arm to point at cursor
+
+    var rotation = math.atan2(mouse[0] - xpos, mouse[1] - ypos) * 180 / math.pi;
+
     ctx.drawImage(document.getElementById("tankBody"), xpos, ypos,120, 120);
     ctx.drawImage(document.getElementById("tankArm"), xpos + 35 , ypos - 30 ,50, 100);
+    ctx.rotation(rotation);
 
   }
 }
