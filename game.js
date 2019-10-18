@@ -34,16 +34,17 @@ document.addEventListener("keydown", keyDown);
 //Assign variable based on which key was pressed
    var keyCode = e.keyCode;
      switch(keyCode) {
-       case 65:
-           xpos = xpos - 4;
+       case 65:  //D key
+           xpos = xpos - 4;    
            break;
-       case 87:
+       case 87:  //W key
            ypos = ypos - 4;
+           
            break;
-       case 68:
+       case 68:  //A Key
            xpos = xpos + 4;
            break;
-       case 83:
+       case 83:  //S Key
            ypos = ypos + 4;
            break;
 
