@@ -39,6 +39,7 @@ document.addEventListener("keydown", keyDown);
            break;
        case 87: //S
            ypos = ypos - 4;
+           
            break;
        case 68: //D
            xpos = xpos + 4;
