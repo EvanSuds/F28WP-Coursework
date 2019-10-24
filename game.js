@@ -1,18 +1,14 @@
 //Declare variables
 //TODO: reduce scope of variables where possible
+"use strict";
+
 var playerTank;
+var shell;
 var up = false;
 var down = false;
 var left = false;
 var right = false;
-var xpos;
-var ypos;
-var faceDir = 0;
 
-function startGame() {
-  playerTank = new tank(300,300); //Create a new tank with starting coordinates of (300,300)
-  gameCanvas.start(); //Call start function on game canvas
-}
 
 var gameCanvas = {
   canvas : document.createElement("canvas"), //create a game canvas
@@ -28,6 +24,13 @@ var gameCanvas = {
     }
   }
 
+function startGame() {
+  gameCanvas.start();
+  playerTank = new tank(); //Create a new tank with starting coordinates of (300,300)
+  //playerShell = new shell()
+}
+
+
 //Add event listener for key presses
 document.addEventListener("keydown", keyDown);
 
@@ -36,53 +39,71 @@ document.addEventListener("keydown", keyDown);
    var keyCode = e.keyCode;
      switch(keyCode) {
        case 65: //A
-           xpos = xpos - 4;
-           faceDir = 0;
+           playerTank.xpos = playerTank.xpos - 4;
+           playerTank.angle = Math.PI / -2;
            break;
-       case 87: //S
-           ypos = ypos - 4;
-           faceDir = 180;
+       case 87: //W
+           playerTank.ypos = playerTank.ypos - 4;
+           playerTank.angle = 0;
            break;
        case 68: //D
-           xpos = xpos + 4;
-           faceDir = 270;
+           playerTank.xpos = playerTank.xpos + 4;
+           playerTank.angle = Math.PI / 2;
            break;
-       case 83: //W
-           ypos = ypos + 4;
-           faceDir = 234;
+       case 83: //S
+           playerTank.ypos = playerTank.ypos + 4;
+           playerTank.angle = Math.PI;
            break;
-
      }
 }
+/*
+document.addEventListener("leftclick" leftClick);
 
-//window.addEventListener('mousemove', function(ev) {
-  //mouse[0] = ev.clientX
-  //mouse[1] = ev.clientY
-//})
+function leftClick() {
+  shell.fire();
+}
+*/
 //Constructor for the tank
-function tank(startxpos,startypos) {
- xpos = Math.floor(Math.random()*(window.innerWidth-130));
- ypos = Math.floor(Math.random()*(window.innerHeight-130));
-
-
+function tank() {
+ this.xpos = 300;
+ this.ypos = 300;
+ this.speed = 0;
+ this.angle = 0;
+ this.width = 120;
+ this.height = 120;
 //Function to update the tank on the canvas
   this.update = function() {
-    ctx = gameCanvas.context;
-    //Draw tank on canvas using tankBody HTML image element
-    //TODO: Get tank to rotate, get arm to point at cursor
-
-    //var rotation = math.atan2(mouse[0] - xpos, mouse[1] - ypos) * 180 / math.pi;
-
-    ctx.drawImage(document.getElementById("tankBody"), xpos, ypos,120, 120);
-    ctx.drawImage(document.getElementById("tankArm"), xpos + 35 , ypos - 30 ,50, 100);
-    //ctx.save();
-    //ctx.rotation(Math.PI);
-    //ctx.drawImage(document.getElementById("tankBody"), xpos, ypos,120, 120);
-    //ctx.drawImage(document.getElementById("tankArm"), xpos + 35 , ypos - 30 ,50, 100);
-    
-
+    window.ctx = gameCanvas.context;
+    ctx.translate(this.xpos + this.width/2, this.ypos + this.height /2);
+    ctx.rotate(this.angle);
+    ctx.drawImage(document.getElementById("tankBody"),0, 0,this.width, this.height);
+    ctx.drawImage(document.getElementById("tankArm"), 35 ,- 30 ,50, 100);
+    ctx.rotate(-this.angle);
+    ctx.translate(-this.xpos - this.width / 2, -this.ypos - this.height / 2);
   }
+
 }
+/*
+function shell(){
+  this.hide();
+  this.xpos = playerTank.xpos;
+  this.ypos = playerTank.ypos;
+  this.height = 60;
+  this.width = 20;
+
+
+
+  this.fire = function(){
+   this.show();
+   shell.setSpeed(15);
+   this.setBoundAction(DIE);
+   this.setPosition(playerTank.xpos, playerTank.ypos);
+   this.setAngle(tankArm.getImgAngle());
+   this.setImage("shell.png");
+   this.setSpeed(15);
+ }
+}
+*/
 //Function to clear and redraw the canvas
 function updateGameCanvas() {
     gameCanvas.clear();
