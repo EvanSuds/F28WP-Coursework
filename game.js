@@ -73,13 +73,14 @@ function tank() {
  this.height = 120;
 //Function to update the tank on the canvas
   this.update = function() {
-    window.ctx = gameCanvas.context;
-    ctx.translate(this.xpos + this.width/2, this.ypos + this.height /2);
-    ctx.rotate(this.angle);
-    ctx.drawImage(document.getElementById("tankBody"),0, 0,this.width, this.height);
-    ctx.drawImage(document.getElementById("tankArm"), 35 ,- 30 ,50, 100);
-    ctx.rotate(-this.angle);
-    ctx.translate(-this.xpos - this.width / 2, -this.ypos - this.height / 2);
+  window.ctx = gameCanvas.context;
+
+  ctx.save();
+  ctx.translate(this.xpos, this.ypos);
+  ctx.rotate(this.angle);
+  ctx.drawImage(document.getElementById("tankBody"), 0, 0, this.width, this.height, -this.width/2, -this.height/2, this.width, this.height);
+  ctx.drawImage(document.getElementById("tankArm"), 35 ,- 30 ,50, 100,-25,-50,50,100);
+  ctx.restore();
   }
 
 }
