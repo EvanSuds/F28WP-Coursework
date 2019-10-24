@@ -3,7 +3,7 @@
 "use strict";
 
 var playerTank;
-var shell;
+var playerShell;
 var up = false;
 var down = false;
 var left = false;
@@ -22,12 +22,12 @@ var gameCanvas = {
     clear : function() {
       this.context.clearRect(0,0,this.canvas.width,this.canvas.height); //Redraw the canvas
     }
-  }
+}
 
 function startGame() {
   gameCanvas.start();
   playerTank = new tank(); //Create a new tank with starting coordinates of (300,300)
-  //playerShell = new shell()
+  playerShell = new shell()
 }
 
 
@@ -56,13 +56,20 @@ document.addEventListener("keydown", keyDown);
            break;
      }
 }
-/*
-document.addEventListener("leftclick" leftClick);
 
-function leftClick() {
-  shell.fire();
+document.addEventListener("mousedown",leftClick);
+
+function leftClick(e) {
+  playerShell.fire();
+  var x = e.clientX;
+  console.log(x);
+  var y = e.clientY;
+  console.log(y);
+  return {x: x, y: y};
+
 }
-*/
+
+
 //Constructor for the tank
 function tank() {
  this.xpos = 300;
@@ -84,27 +91,26 @@ function tank() {
   }
 
 }
-/*
+
+function angleBetweenPoints(mousepos, tankpos) {
+  return Math.atan2(tankpos.y - mousepos.y, tankpos.x - mousepos.x);
+}
+
 function shell(){
-  this.hide();
+  document.getElementById("shell").style.display = "none";
   this.xpos = playerTank.xpos;
   this.ypos = playerTank.ypos;
   this.height = 60;
   this.width = 20;
 
-
-
   this.fire = function(){
-   this.show();
-   shell.setSpeed(15);
-   this.setBoundAction(DIE);
-   this.setPosition(playerTank.xpos, playerTank.ypos);
-   this.setAngle(tankArm.getImgAngle());
-   this.setImage("shell.png");
-   this.setSpeed(15);
+    document.getElementById("shell").style.display = "block";
+    //mousepositions = leftClick();
+    //var tankposition = {x:playerTank.xpos, y:playerTank.ypos};
+    //var angle = angleBetweenPoints(mouseposition,tankposition);
  }
 }
-*/
+
 //Function to clear and redraw the canvas
 function updateGameCanvas() {
     gameCanvas.clear();
