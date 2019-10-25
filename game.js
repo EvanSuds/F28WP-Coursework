@@ -60,16 +60,13 @@ document.addEventListener("keydown", keyDown);
 document.addEventListener("mousedown",leftClick);
 
 function leftClick(e) {
-  playerShell.fire();
-  mouseposition(e);
+  playerShell.fire(e);
 
 }
 
 function mouseposition(e) {
   var x = e.clientX;
-  console.log(x);
   var y = e.clientY;
-  console.log(y);
   return {x: x, y: y};
 }
 
@@ -96,21 +93,24 @@ function tank() {
 }
 
 function angleBetweenPoints(mousepos, tankpos) {
+  console.log("Mouse x position: " + mousepos.x + " Mouse y position: " + mousepos.y);
+  console.log("Tank x position: " + tankpos.x + " Tank y position: " + tankpos.y);
   return Math.atan2(tankpos.y - mousepos.y, tankpos.x - mousepos.x);
 }
 
 function shell(){
-  document.getElementById("shell").style.display = "none";
-  this.xpos = playerTank.xpos;
+  document.getElementById("shell").style.display = "none"; //Hide the shell until it is fired
+  this.xpos = playerTank.xpos; // Shell fires from where the tank is
   this.ypos = playerTank.ypos;
-  this.height = 60;
+  this.height = 60; // 60x20 size
   this.width = 20;
 
-  this.fire = function(){
-    document.getElementById("shell").style.display = "block";
-    //mousepositions = leftClick();
-    //var tankposition = {x:playerTank.xpos, y:playerTank.ypos};
-    //var angle = angleBetweenPoints(mouseposition,tankposition);
+  this.fire = function(e){ //shell.fire called when left click is pressed
+    document.getElementById("shell").style.display = "block"; //Make the element visible
+    var mousepositions = mouseposition(e); //TODO : get the mouse position when left click is pressed
+    var tankposition = {x:playerTank.xpos, y:playerTank.ypos}; // Get current tank position
+    var angle = angleBetweenPoints(mousepositions,tankposition);
+    console.log("Angle in radians between two points: " + angle);
  }
 }
 
