@@ -84,7 +84,7 @@ function tank() {
   ctx.translate(this.xpos, this.ypos);
   ctx.rotate(this.angle);
   ctx.drawImage(document.getElementById("tankBody"), 0, 0, this.width*1.5, this.height*1.5, -this.width/2, -this.height/2, this.width, this.height);
-  ctx.drawImage(document.getElementById("tankArm"), 35 ,- 30 ,50, 100,-25,-50,50,100);
+  ctx.drawImage(document.getElementById("tankArm"), 20 ,- 15 ,50, 100,-25,-50,50,100);
   ctx.restore();
   }
 
