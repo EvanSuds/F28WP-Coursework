@@ -61,12 +61,16 @@ document.addEventListener("mousedown",leftClick);
 
 function leftClick(e) {
   playerShell.fire();
+  mouseposition(e);
+
+}
+
+function mouseposition(e) {
   var x = e.clientX;
   console.log(x);
   var y = e.clientY;
   console.log(y);
   return {x: x, y: y};
-
 }
 
 
@@ -81,7 +85,6 @@ function tank() {
 //Function to update the tank on the canvas
   this.update = function() {
   window.ctx = gameCanvas.context;
-
   ctx.save();
   ctx.translate(this.xpos, this.ypos);
   ctx.rotate(this.angle);
