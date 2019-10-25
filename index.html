@@ -3,7 +3,7 @@
   <title>Cyber</title>
   <meta charset ="utf-8">
   <meta name = "description" content= "HTML5, CSS3, javaScript">
-  <script src="Script.js"></script>
+  <script src="login.js"></script>
   <link rel = "stylesheet" href="Styles.css">
   <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
 </head>
@@ -13,6 +13,14 @@
   <form name = "usernameForm" onsubmit = "return formValidation()" action = "game.html">
     Username:<br>
   <input type="text" name="username" value="Player1">
+  <br>
+    Password:<br>
+  <input type="password" name="password" id="userPW">
+  <br>
+  <div class = "showPW">
+    <input type="checkbox" onclick="showPassword()">
+    Show Password
+  </div>
   <br>
   <input type="submit" value="Submit">
 </form>
