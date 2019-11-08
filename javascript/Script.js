@@ -5,3 +5,12 @@ function formValidation() {
     return false;
   }
 }
+
+function showPassword() {
+  var field = document.getElementById("userPW");
+  if (field.type === "password") {
+    field.type = "text";
+  } else {
+    field.type = "password";
+  }
+}

@@ -60,3 +60,8 @@ canvas {
   padding-right: 10%;
   padding-top: 2%;
 }
+
+.showPW {
+  padding-top: 15px;
+  font-size: 18px;
+}
