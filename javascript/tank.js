@@ -1,7 +1,7 @@
 //Constructor for the tank
 function tank() {
-    this.xpos = Math.floor(Math.random()*(window.innerWidth-200));
-    this.ypos = Math.floor(Math.random()*(window.innerHeight-350));
+    this.xpos = 200;
+    this.ypos = 200;
     this.width = 80;
     this.height = this.width*1.36;
    //Function to update the tank on the canvas
