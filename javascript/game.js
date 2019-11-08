@@ -26,11 +26,12 @@ var gameCanvas = {
 function startGame() {
   gameCanvas.start();
   playerTank = new tank(); //Create a new tank with starting coordinates of (300,300)
-  playerShell = new shell()
+  playerShell = new shell();
 }
 
 //Function to clear and redraw the canvas
 function updateGameCanvas() {
     gameCanvas.clear();
     playerTank.update();
+    playerShell.update();
 }
