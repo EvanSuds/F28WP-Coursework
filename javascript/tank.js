@@ -1,7 +1,7 @@
 //Constructor for the tank
 function tank() {
-    this.xpos = 200;
-    this.ypos = 200;
+    this.xpos = 0;
+    this.ypos = 0;
     this.width = 80;
     this.height = this.width*1.36;
    //Function to update the tank on the canvas

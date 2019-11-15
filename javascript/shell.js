@@ -13,17 +13,17 @@ function shell(){
       this.xpos = playerTank.xpos; // Shell fires from where the tank is
       this.ypos = playerTank.ypos;
       var mousepositions = mouseposition(e); //TODO : get the mouse position when left click is pressed
-      var tankposition = {x:playerTank.xpos, y:playerTank.ypos}; // Get current tank position
+      var tankposition = {x:this.xpos, y:this.ypos}; // Get current tank position
       angle = angleBetweenPoints(mousepositions,tankposition); // Get angle in radians between the points
       console.log("Angle in radians between two points: " + angle);
 }
     this.update = function() {
 
       if(this.firing) {
-      this.xpos += this.speed * Math.cos(angle / Math.PI);
-      this.ypos += this.speed * Math.sin(angle / Math.PI);
+      this.xpos += this.speed * Math.cos(angle);
+      this.ypos += this.speed * Math.sin(angle);
       window.ctx = gameCanvas.context;
-      ctx.drawImage(document.getElementById("shell"),this.xpos,this.ypos,this.width,this.height);
+      ctx.drawImage(document.getElementById("shell"),playerShell.xpos,playerShell.ypos,this.width,this.height);
    }
    else {
      return;
