@@ -3,6 +3,7 @@
 "use strict";
 
 var playerTank;
+var enemyTank; // Single player tank for testing purposes
 var playerShell;
 var up = false;
 var down = false;
@@ -26,6 +27,7 @@ var gameCanvas = {
 function startGame() {
   gameCanvas.start();
   playerTank = new tank(); //Create a new tank with starting coordinates of (300,300)
+  enemyTank = new tank();
   playerShell = new shell();
 }
 
@@ -33,5 +35,6 @@ function startGame() {
 function updateGameCanvas() {
     gameCanvas.clear();
     playerTank.update();
+    enemyTank.update();
     playerShell.update();
 }

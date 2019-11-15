@@ -18,7 +18,10 @@ function shell(){
       console.log("Angle in radians between two points: " + angle);
 }
     this.update = function() {
-
+      if(this.xpos == enemyTank.xpos && this.ypos == enemyTank.ypos) {
+        console.log("collision");
+        enemyTank.kill();
+      }
       if(this.firing) {
       this.xpos += this.speed * Math.cos(angle);
       this.ypos += this.speed * Math.sin(angle);

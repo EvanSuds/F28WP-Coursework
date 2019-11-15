@@ -13,4 +13,9 @@ function tank() {
      ctx.drawImage(document.getElementById("tankBody"), 0, 0, this.width*3.03, this.height*3, -this.width/3.03, -this.height/3, this.width, this.height);
      ctx.restore();
      }
+
+     this.kill = function() {
+       alert("You died");
+       
+     }
     }
