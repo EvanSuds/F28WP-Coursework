@@ -21,5 +21,25 @@ document.addEventListener("keydown", keyDown);
            playerTank.ypos = playerTank.ypos + 4;
            playerTank.angle = Math.PI;
            break;
+      case 81: //Q
+          if(playerShell.angle >  270) {
+            playerShell.angle = -90;
+          }
+          if(playerShell.angle < -90) {
+            playerShell.angle = 360 + playerShell.angle;
+          }
+          playerShell.angle--;
+          document.getElementById("tankAngle").innerHTML = (playerShell.angle + 90) + " degree(s)";
+          break;
+      case 69: //E
+          if(playerShell.angle > 270) {
+            playerShell.angle = -90;
+          }
+          if(playerShell.angle < -90) {
+            playerShell.angle = 360 + playerShell.angle;
+          }
+          playerShell.angle++;
+          document.getElementById("tankAngle").innerHTML = (playerShell.angle + 90) + " degree(s)";
+          break;
      }
 }

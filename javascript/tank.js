@@ -4,6 +4,8 @@ function tank() {
     this.ypos = 0;
     this.width = 80;
     this.height = this.width*1.36;
+    this.score = 0;
+    this.totalKilled = 0;
    //Function to update the tank on the canvas
      this.update = function() {
      window.ctx = gameCanvas.context;
@@ -15,7 +17,11 @@ function tank() {
      }
 
      this.kill = function() {
-       alert("You died");
-       
+       playerTank.score += 100;
+       playerTank.totalKilled++;
+       document.getElementById("gameKilled").innerHTML = playerTank.score;
+       document.getElementById("gameScore").innerHTML = playerTank.totalKilled;
+       alert("You killed the enemy!");
+
      }
     }

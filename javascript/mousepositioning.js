@@ -5,14 +5,21 @@ function leftClick(e) {
   playerShell.fire(e);
 
 }
-
-function mouseposition(e) {
+function mouseposition(canvas,e) {
+  /*
   var canvasOffset=$("canvas").offset();
   var offsetX = canvasOffset.left;
   var offsetY = canvasOffset.top;
   var x = parseInt(e.clientX-offsetX);
   var y = parseInt(e.clientY-offsetY);
   return {x: x, y: y};
+  */
+
+  var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
 }
 
 

@@ -51,7 +51,7 @@ canvas {
   height: 18%;
 }
 
-.gameUITitle, #gameScore, #gameKilled {
+.gameUITitle, #gameScore, #gameKilled, #tankAngle {
   color: white;
   font-family: 'Oswald', sans-serif;
   font-size: 28px;

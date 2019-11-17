@@ -11,7 +11,7 @@ var left = false;
 var right = false;
 
 var gameCanvas = {
-  canvas : document.createElement("canvas"), //create a game canvas
+  canvas : document.createElement('canvas'),//create a game canvas
   start : function(){
     this.canvas.width = window.innerWidth; //set width to window width
     this.canvas.height = window.innerHeight; //set height to window height
@@ -24,11 +24,13 @@ var gameCanvas = {
     }
 }
 
+
 function startGame() {
   gameCanvas.start();
   playerTank = new tank(); //Create a new tank with starting coordinates of (300,300)
   enemyTank = new tank();
   playerShell = new shell();
+  playerShell.angle = -90;  
 }
 
 //Function to clear and redraw the canvas
