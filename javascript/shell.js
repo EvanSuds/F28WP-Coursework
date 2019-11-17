@@ -12,19 +12,23 @@ function shell(){
       this.firing = true;
       this.xpos = playerTank.xpos; // Shell fires from where the tank is
       this.ypos = playerTank.ypos;
-
       angleToFire = this.angle * (Math.PI/180); // To ensure the angle does not change once fired
-      console.log(this.angle);
-      console.log(angleToFire);
-      //var mousepositions = mouseposition(gameCanvas,e);
-      //var tankposition = {x:this.xpos, y:this.ypos}; // Get current tank position
-      //angle = angleBetweenPoints(mousepositions,tankposition); // Get angle in radians between the points
-      //console.log("Angle in radians between two points: " + angle);
 }
+
+    function isColliding(enemyTank,playerShell) {
+      return !(
+       ((enemyTank.ypos + enemyTank.height) < (playerShell.ypos)) ||
+       (enemyTank.ypos > (playerShell.ypos + playerShell.height)) ||
+       ((enemyTank.xpos + enemyTank.width) < playerShell.xpos) ||
+       (enemyTank.xpos > (playerShell.xpos + playerShell.width))
+   );
+          }
     this.update = function() {
-      if(this.xpos == enemyTank.xpos && this.ypos == enemyTank.ypos) {
-        console.log("collision");
-        enemyTank.kill();
+      if(isColliding(enemyTank, playerShell)) {
+        var kill = true;
+      }
+      if(kill) {
+        playerTank.kill();
       }
       if(this.firing) {
       this.xpos += this.speed * Math.cos(angleToFire);

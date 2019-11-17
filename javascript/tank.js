@@ -19,9 +19,8 @@ function tank() {
      this.kill = function() {
        playerTank.score += 100;
        playerTank.totalKilled++;
-       document.getElementById("gameKilled").innerHTML = playerTank.score;
-       document.getElementById("gameScore").innerHTML = playerTank.totalKilled;
-       alert("You killed the enemy!");
+       document.getElementById("gameScore").innerHTML = playerTank.score;
+       document.getElementById("gameKilled").innerHTML = playerTank.totalKilled;
 
      }
     }
