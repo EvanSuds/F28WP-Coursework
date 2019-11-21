@@ -15,7 +15,7 @@ function shell(){
       angleToFire = this.angle * (Math.PI/180); // To ensure the angle does not change once fired
 }
 
-    function isColliding(enemyTank,playerShell) {
+    function isColliding(enemyTank,playerShell) { //Check if the objects are colliding using bounding rectangles
       return !(
        ((enemyTank.ypos + enemyTank.height) < (playerShell.ypos)) ||
        ((enemyTank.ypos) > (playerShell.ypos + playerShell.height)) ||
@@ -23,16 +23,16 @@ function shell(){
        ((enemyTank.xpos) > (playerShell.xpos + playerShell.width))
    );
           }
-    this.update = function() {
-      if(isColliding(enemyTank, playerShell) && this.firing) {
+    this.update = function() { //Update function
+      if(isColliding(enemyTank, playerShell) && this.firing) { //Check if the shell has collided
         var kill = true;
-        this.firing = false;
+        this.firing = false; //Stop firing
+      }
+      if(kill) {
+        playerTank.kill(); //Call kill function
       }
 
-      if(kill) {
-        playerTank.kill();
-      }
-      if(this.firing) {
+      if(this.firing) { //Move projectile across screen and draw on canvas
       this.xpos += this.speed * Math.cos(angleToFire);
       this.ypos += this.speed * Math.sin(angleToFire);
       window.ctx = gameCanvas.context;

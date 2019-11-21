@@ -1,9 +1,8 @@
-//Declare variables
-//TODO: reduce scope of variables where possible
-"use strict";
 
+//Declare variables
+"use strict";
 var playerTank;
-var enemyTank; // Single player tank for testing purposes
+var enemyTank; //Single player tank for testing purposes, to be removed
 var playerShell;
 var up = false;
 var down = false;
@@ -11,10 +10,10 @@ var left = false;
 var right = false;
 
 var gameCanvas = {
-  canvas : document.createElement('canvas'),//create a game canvas
+  canvas : document.createElement('canvas'), //Create a game canvas
   start : function(){
-    this.canvas.width = window.innerWidth; //set width to window width
-    this.canvas.height = window.innerHeight; //set height to window height
+    this.canvas.width = window.innerWidth; //Set width to window width
+    this.canvas.height = window.innerHeight; //Set height to window height
     this.context = this.canvas.getContext("2d");
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     this.interval=setInterval(updateGameCanvas,20); //How often the window refreshes
@@ -27,17 +26,17 @@ var gameCanvas = {
 
 function startGame() {
   gameCanvas.start();
-  playerTank = new tank(); //Create a new tank with starting coordinates of (300,300)
+  playerTank = new tank(); //Create a new tank, its start position is randomised
   enemyTank = new tank();
-  playerShell = new shell();
-  playerShell.angle = -90;
-  var socket = io();
-  socket.on('message', function(data) {
+  playerShell = new shell(); //Create a shell object
+  playerShell.angle = -90; //The starting angle is -90 (which is towards the top of the screen)
+  var socket = io(); //Using socket.io to allow communication between the client and server
+  socket.on('message', function(data) { //Receive a text message from the server
     console.log(data);
   });
 }
 
-//Function to clear and redraw the canvas
+//Function to clear, update and redraw the canvas and the elements on it
 function updateGameCanvas() {
     gameCanvas.clear();
     playerTank.update();
