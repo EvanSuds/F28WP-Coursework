@@ -24,9 +24,11 @@ function shell(){
    );
           }
     this.update = function() {
-      if(isColliding(enemyTank, playerShell)) {
+      if(isColliding(enemyTank, playerShell) && this.firing) {
         var kill = true;
+        this.firing = false;
       }
+
       if(kill) {
         playerTank.kill();
       }
