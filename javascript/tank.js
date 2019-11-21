@@ -1,7 +1,7 @@
 //Constructor for the tank
 function tank() {
-    this.xpos = 0;
-    this.ypos = 0;
+    this.xpos = 300;
+    this.ypos = 300;
     this.width = 80;
     this.height = this.width*1.36;
     this.score = 0;

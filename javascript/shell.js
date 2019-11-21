@@ -18,9 +18,9 @@ function shell(){
     function isColliding(enemyTank,playerShell) {
       return !(
        ((enemyTank.ypos + enemyTank.height) < (playerShell.ypos)) ||
-       (enemyTank.ypos > (playerShell.ypos + playerShell.height)) ||
-       ((enemyTank.xpos + enemyTank.width) < playerShell.xpos) ||
-       (enemyTank.xpos > (playerShell.xpos + playerShell.width))
+       ((enemyTank.ypos) > (playerShell.ypos + playerShell.height)) ||
+       ((enemyTank.xpos + enemyTank.width) < (playerShell.xpos)) ||
+       ((enemyTank.xpos) > (playerShell.xpos + playerShell.width))
    );
           }
     this.update = function() {

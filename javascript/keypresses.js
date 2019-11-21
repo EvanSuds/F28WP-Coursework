@@ -28,7 +28,7 @@ document.addEventListener("keydown", keyDown);
           if(playerShell.angle < -90) {
             playerShell.angle = 360 + playerShell.angle;
           }
-          playerShell.angle--;
+          playerShell.angle-=2;
           document.getElementById("tankAngle").innerHTML = (playerShell.angle + 90) + " degree(s)";
           break;
       case 69: //E
@@ -38,7 +38,7 @@ document.addEventListener("keydown", keyDown);
           if(playerShell.angle < -90) {
             playerShell.angle = 360 + playerShell.angle;
           }
-          playerShell.angle++;
+          playerShell.angle+=2;
           document.getElementById("tankAngle").innerHTML = (playerShell.angle + 90) + " degree(s)";
           break;
      }
