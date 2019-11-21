@@ -2,6 +2,14 @@
 //TODO: reduce scope of variables where possible
 "use strict";
 
+
+  var socket = io();
+  console.log("Code in func declarations");
+  socket.on('message', function(data) {
+    console.log(data);
+    console.log("Code here");
+  });
+
 var playerTank;
 var enemyTank; // Single player tank for testing purposes
 var playerShell;
@@ -24,21 +32,18 @@ var gameCanvas = {
     }
 }
 
-
 function startGame() {
+  console.log("code in startgame");
   gameCanvas.start();
   playerTank = new tank(); //Create a new tank with starting coordinates of (300,300)
   enemyTank = new tank();
   playerShell = new shell();
   playerShell.angle = -90;
-  var socket = io();
-  socket.on('message', function(data) {
-    console.log(data);
-  });
 }
 
 //Function to clear and redraw the canvas
 function updateGameCanvas() {
+    console.log("Code in func declarations");
     gameCanvas.clear();
     playerTank.update();
     enemyTank.update();
