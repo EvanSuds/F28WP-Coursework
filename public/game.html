@@ -1,0 +1,51 @@
+<html>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="javascript\tank.js"></script>
+<script src="javascript\mousepositioning.js"></script>
+<script src="javascript\shell.js"></script>
+<script src="javascript\keypresses.js"></script>
+<script src="javascript\game.js"></script>
+<link rel = "stylesheet" type = "text/css" href="Styles.css">
+</head>
+
+<body onload = "startGame()">
+
+<p hidden>
+  <img id="tankBody" src = "media\tankbody.png">
+  <img id="tankArm" src = "media\tankarm.png">
+  <img id="shell" src = "media\shell.png">
+</p>
+
+  <div id = "UIArea">
+    <table id = "gameInfo" style = "float: left">
+     <tr>
+       <td class = "gameUITitle">Score: </td>
+       <td id = gameScore>0</td>
+     </tr>
+     <tr>
+       <td class = "gameUITitle">Enemies Killed: </td>
+       <td id = gameKilled>0</td>
+     </tr>
+    </table>
+
+    <table id = "gameInfo" style = "float: left">
+     <tr>
+       <td class = "gameUITitle">Username</td>
+     </tr>
+     <tr>
+       <td class = "gameUITitle">Leaderboard</td>
+     </tr>
+    </table>
+
+    <table id = "tankInfo" style = float: left>
+      <tr>
+        <td class = "gameUITitle">Tank arm bearing:</td>
+        <td id = tankAngle>0</td>
+      </tr>
+  </div>
+
+</body>
+
+</html>
