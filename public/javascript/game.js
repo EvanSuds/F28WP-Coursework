@@ -1,4 +1,4 @@
-
+const sqlite3 = require('sqlite3').verbose();
 //Declare variables
 "use strict";
 var playerTank;
@@ -10,6 +10,13 @@ var left = false;
 var right = false;
 var socket = io();
 var username = prompt("Please choose a username");
+
+let db = new sqlite3.Database(':memory:', (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to the database.');
+});
 
 var gameCanvas = {
   canvas : document.createElement('canvas'), //Create a game canvas
