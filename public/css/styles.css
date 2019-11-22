@@ -49,6 +49,11 @@ canvas {
 #gameInfo {
   width: 35%;
   height: 18%;
+  float: left;
+}
+
+#tankInfo {
+  float: left;
 }
 
 .gameUITitle, #gameScore, #gameKilled, #tankAngle {
