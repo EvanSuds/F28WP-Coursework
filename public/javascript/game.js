@@ -42,6 +42,9 @@ function startGame() {
   socket.on('message', function(data) { //Receive a text message from the server
     console.log(data); //Log ("Communicating with the server!")
   });
+
+// TODO - When server completed, create new row in table when player joins game
+  db.run('CREATE TABLE scores(username text, score )');
 }
 
 $(document).ready( function(){
