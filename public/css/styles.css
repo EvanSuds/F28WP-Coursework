@@ -36,6 +36,7 @@ canvas {
 
 #UIArea {
   background-color: blue;
+  position:center;
   overflow:hidden;
   width: 80%;
   height: 18%;
