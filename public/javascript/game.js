@@ -40,6 +40,7 @@ function startGame() {
 $(document).ready( function(){
     console.log("Ready to play, calling joinGame function on server");
     socket.emit('joinGame', {name: username});
+    document.getElementById("playerName").innerHTML = username;
 });
 
 //Function to clear, update and redraw the canvas and the elements on it
