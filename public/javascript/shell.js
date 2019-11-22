@@ -15,14 +15,16 @@ function shell(){
       angleToFire = this.angle * (Math.PI/180); // To ensure the angle does not change once fired
 }
 
-    function isColliding(enemyTank,playerShell) { //Check if the objects are colliding using bounding rectangles
-      return !(
-       ((enemyTank.ypos + enemyTank.height) < (playerShell.ypos)) ||
-       ((enemyTank.ypos) > (playerShell.ypos + playerShell.height)) ||
-       ((enemyTank.xpos + enemyTank.width) < (playerShell.xpos)) ||
-       ((enemyTank.xpos) > (playerShell.xpos + playerShell.width))
-   );
-          }
+  function isColliding(rect1,rect2) { //Check if the objects are colliding using bounding rectangles
+    if (rect1.xpos < rect2.xpos + rect2.width &&
+      rect1.xpos + rect1.width > rect2.xpos &&
+      rect1.ypos < rect2.ypos + rect2.height &&
+      rect1.ypos + rect1.height > rect2.ypos) {
+        return true;
+      }
+        return false;
+    }
+
     this.update = function() { //Update function
       if(isColliding(enemyTank, playerShell) && this.firing) { //Check if the shell has collided
         var kill = true;

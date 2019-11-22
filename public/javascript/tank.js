@@ -2,8 +2,8 @@
 function tank() {
     this.xpos = 300;//Starting coordinates of (300,300)
     this.ypos = 300;
-    this.width = 80;
-    this.height = this.width*1.36;
+    this.width = 70;
+    this.height = 70;
     this.score = 0; //Keep a score
     this.totalKilled = 0; //Keep number of players killed
    //Function to update the tank on the canvas
@@ -12,7 +12,7 @@ function tank() {
      ctx.save();
      ctx.translate(this.xpos, this.ypos);
      ctx.rotate(this.angle);
-     ctx.drawImage(document.getElementById("tankBody"), 0, 0, this.width*3.03, this.height*3, -this.width/3.03, -this.height/3, this.width, this.height);
+     ctx.drawImage(document.getElementById("tankBody"), 0, 0, this.width, this.height);
      ctx.restore();
      }
 
