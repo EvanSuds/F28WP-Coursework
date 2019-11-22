@@ -36,6 +36,7 @@ canvas {
 
 #UIArea {
   background-color: blue;
+  overflow:hidden;
   width: 80%;
   height: 18%;
   display: block;
@@ -46,20 +47,18 @@ canvas {
   border-color : black;
 }
 
-#gameInfo {
-  width: 35%;
+#gameInfo,#playerInfo,#tankInfo {
+  width: 30%;
   height: 18%;
   float: left;
 }
 
-#tankInfo {
-  float: left;
-}
+
 
 .gameUITitle, #gameScore, #gameKilled, #tankAngle {
   color: white;
   font-family: 'Oswald', sans-serif;
-  font-size: 28px;
+  font-size: 24px;
   margin: auto;
   padding-left: 10%;
   padding-right: 10%;

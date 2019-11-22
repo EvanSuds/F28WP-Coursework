@@ -1,25 +1,27 @@
-<html>
+<!DOCTYPE HTML>
+<html lang = "en">
 
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
-<script src="javascript\tank.js"></script>
-<script src="javascript\mousepositioning.js"></script>
-<script src="javascript\shell.js"></script>
-<script src="javascript\keypresses.js"></script>
-<script src="javascript\game.js"></script>
-<link rel = "stylesheet" type = "text/css" href="css\styles.css">
+  <title>Cyber</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+  <script src="javascript/tank.js"></script>
+  <script src="javascript/mousepositioning.js"></script>
+  <script src="javascript/shell.js"></script>
+  <script src="javascript/keypresses.js"></script>
+  <script src="javascript/game.js"></script>
+  <link rel = "stylesheet" href="css/styles.css">
 </head>
 
 <body onload = "startGame()">
 
 <p hidden>
-  <img id="tankBody" src = "media\tankbody.png">
-  <img id="tankArm" src = "media\tankarm.png">
-  <img id="shell" src = "media\shell.png">
+  <img id="tankBody" src = "media/tankbody.png" alt = "Tank Body">
+  <img id="tankArm" src = "media/tankarm.png" alt = "Tank Arm">
+  <img id="shell" src = "media/shell.png" alt = "Tank shell">
 </p>
 
-  <div id = "UIArea">
+<div id = "UIArea">
     <table id = "gameInfo">
      <tr>
        <td class = "gameUITitle">Score: </td>
@@ -31,7 +33,7 @@
      </tr>
     </table>
 
-    <table id = "gameInfo">
+    <table id = "playerInfo">
      <tr>
        <td class = "gameUITitle">Username</td>
      </tr>
@@ -45,6 +47,7 @@
         <td class = "gameUITitle">Tank arm bearing:</td>
         <td id = tankAngle>0</td>
       </tr>
+    </table>
   </div>
 
 </body>
