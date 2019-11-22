@@ -19,7 +19,7 @@ function tank() {
      this.kill = function() { //Called if the player kills another player
        playerTank.score += 100;
        playerTank.totalKilled++;
-       document.getElementById("gameScore").innerHTML = playerTank.score; 
+       document.getElementById("gameScore").innerHTML = playerTank.score;
        document.getElementById("gameKilled").innerHTML = playerTank.totalKilled;
 
      }

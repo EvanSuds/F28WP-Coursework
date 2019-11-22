@@ -54,8 +54,6 @@ canvas {
   float: left;
 }
 
-
-
 .gameUITitle, #gameScore, #gameKilled, #tankAngle {
   color: white;
   font-family: 'Oswald', sans-serif;

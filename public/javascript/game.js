@@ -2,12 +2,14 @@
 //Declare variables
 "use strict";
 var playerTank;
-var enemyTank; //Single player tank for testing purposes, to be removed
+var enemyTank;
 var playerShell;
 var up = false;
 var down = false;
 var left = false;
 var right = false;
+var socket = io();
+var username = prompt("Please choose a username");
 
 var gameCanvas = {
   canvas : document.createElement('canvas'), //Create a game canvas
@@ -23,18 +25,22 @@ var gameCanvas = {
     }
 }
 
-
 function startGame() {
-  gameCanvas.start();
-  playerTank = new tank(); //Create a new tank, its start position is randomised
+  playerTank = new tank();
   enemyTank = new tank();
+  gameCanvas.start();
   playerShell = new shell(); //Create a shell object
   playerShell.angle = -90; //The starting angle is -90 (which is towards the top of the screen)
-  var socket = io(); //Using socket.io to allow communication between the client and server
+   //Using socket.io to allow communication between the client and server
   socket.on('message', function(data) { //Receive a text message from the server
-    console.log(data);
+    console.log(data); //Log ("Communicating with the server!")
   });
 }
+
+$(document).ready( function(){
+    console.log("Ready to play, calling joinGame function on server");
+    socket.emit('joinGame', {name: username});
+});
 
 //Function to clear, update and redraw the canvas and the elements on it
 function updateGameCanvas() {

@@ -12,23 +12,22 @@ app.use(express.static(path.join(__dirname, 'public'))); //Use the public folder
 * Open the index.html file first as it contains links to all the other html, css and js files
 * It is stored in the public directory like all the other files but not in a subfolder.
 */
+
 app.get('/', function(request, response) {
-  response.sendFile(path.join(__dirname, 'index.html')); 
+  response.sendFile(path.join(__dirname, 'index.html'));
 })
 
-app.post('',function(req,res){
-   var username = req.body.username;
-   var password = req.body.password;
-   res.send(username,password);
-   console.log(username,password);
 
+io.on('connection', function(client) { //Logs that a user has connected
+	console.log("A new user connected");
+
+  client.on('joinGame', function(createTank) {
+    console.log(createTank.name + " has joined the game");
+    client.emit('newTank');
+  });
 });
 
-io.on('connection', function(client) {
-	console.log("User connected");
-});
-
-setInterval(function() {
+setInterval(function() { //Sends message to all connected users
   io.sockets.emit('message', 'Communicating with the server!');
 }, 1000);
 
