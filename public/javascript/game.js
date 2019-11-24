@@ -44,7 +44,8 @@ function startGame() {
   });
 
 // TODO - When server completed, create new row in table when player joins game
-  db.run('CREATE TABLE scores(username text, score )');
+  db.run('CREATE TABLE scores(username text, score int)');
+  db.run('CREATE TABLE playerInfo(username text, KD real, deaths int, kills int)');
 }
 
 $(document).ready( function(){
