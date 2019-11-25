@@ -30,22 +30,18 @@ io.on('connection', function(client) { //Logs that a user has connected
     client.emit('newTank');
   });
 
-  client.on('joinGame', function(addUserToLeaderboard) {
+  socket.on('newUser', function (user, pass) {
 
-  })
+    console.log('new user function called');
+    playerInfoDB.run(`INSERT INTO users(username, password) VALUES(?)`, [user, pass], function(err) {
+        if (err) {
+          return console.log(err.message);
+        }
+      });
 
-
+  });
 });
 
-socket.on('newUser', function (user, pass) {
-
-  playerInfoDB.run(`INSERT INTO users(username, password) VALUES(?)`, [user, pass], function(err) {
-      if (err) {
-        return console.log(err.message);
-      }
-    });
-
-});
 
 setInterval(function() { //Sends message to all connected users
   io.sockets.emit('message', 'Communicating with the server!');
@@ -64,7 +60,7 @@ server.listen(5000, function() {
   if (err) {
     console.error(err.message);
   }
-  playerInfoDB.run('CREATE TABLE users(username text, password text)');
+  playerInfoDB.run('CREATE TABLE if not exists users(username text, password text)');
   console.log('Connected to the player info database.');
   });
 
