@@ -9,7 +9,9 @@ app.set('port', 5000); //Set the port to be 5000
 app.use(express.static(path.join(__dirname, 'public'))); //Use the public folder to find the files
 
 var MongoClient = require('mongodb').MongoClient;
-var dbURL = 'mongodb://localhost/playerInfo'
+var dbURL1 = 'mongodb://localhost/leaderboard'
+var dbURL2 = 'mongodb://localhost/playerinfo'
+
 /*
 * Open the index.html file first as it contains links to all the other html, css and js files
 * It is stored in the public directory like all the other files but not in a subfolder.
@@ -39,7 +41,7 @@ setInterval(function() { //Sends message to all connected users
 server.listen(5000, function() {
   console.log('Starting server on port 5000');
 
-  MongoClient.connect(dbURL, function(err, db){
+  MongoClient.connect(dbURL1, function(err, db){
     var leaderboardDB = db.db("leaderboard");
 
     leaderboardDB.createCollection("Leaderboard", function(err, res) {
@@ -49,5 +51,17 @@ server.listen(5000, function() {
     })
 
     console.log("Connected to leaderboard database");
+  })
+
+  MongoClient.connect(dbURL2, function(err, db){
+    var playerInfoDB = db.db("PlayerInfo");
+
+    leaderboardDB.createCollection("PlayerInfo", function(err, res) {
+        if (err) throw (err);
+        console.log("PlayerInfo database created");
+
+    })
+
+    console.log("Connected to playerInfo database");
   })
 });
