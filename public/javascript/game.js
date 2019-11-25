@@ -48,6 +48,6 @@ $(document).ready( function(){
 function updateGameCanvas() {
     gameCanvas.clear();
     playerTank.update();
-    enemyTank.update();
+    //enemyTank.update();
     playerShell.update();
 }
