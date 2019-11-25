@@ -28,7 +28,7 @@ io.on('connection', function(client) { //Logs that a user has connected
     console.log(uname + " has joined the game");
     client.emit('newTank');
   });
-
+  //Function for adding a new user to the users database, called by the signup script
   client.on('newUser', function (user, pass) {
 
     console.log('new user function called');
@@ -44,10 +44,13 @@ setInterval(function() { //Sends message to all connected users
 server.listen(5000, function() {
   console.log('Starting server on port 5000');
 
+  //Initiates database
   playerInfoDB = new sqlite3.Database('./public/databases/playerinfo.db', (err) => {
   if (err) {
     console.error(err.message);
   }
+
+  //Creates the users table if it doesn't already exist in the database
   playerInfoDB.run('CREATE TABLE if not exists users(username text, password text)');
   console.log('Connected to the player info database.');
   });
