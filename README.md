@@ -23,6 +23,8 @@
 ### This game will incorporate the following features:
 
 - [ ] Login Screen and usernames
-- [ ] Each user will have a total score, level system and K/D ratio
-- [ ] Different unlockable classes of tanks with different attributes
-- [ ] Different levels to play on e.g. Different planets
+- [ ] Each user will have a total score, number of kills
+- [ ] Secure user files for accounts
+- [ ] Leaderboard of the highest scoring players
+- [ ] Sleak design for an optimal gaming experience
+
