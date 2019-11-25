@@ -5,14 +5,9 @@ var socketIO = require('socket.io');
 var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
-var username;
-var leaderboardDB;
+var uname;
 app.set('port', 5000); //Set the port to be 5000
 app.use(express.static(path.join(__dirname, 'public'))); //Use the public folder to find the files
-
-var MongoClient = require('mongodb').MongoClient;
-var dbURL1 = 'mongodb://localhost/leaderboard'
-var dbURL2 = 'mongodb://localhost/playerinfo'
 
 /*
 * Open the index.html file first as it contains links to all the other html, css and js files
@@ -28,17 +23,13 @@ io.on('connection', function(client) { //Logs that a user has connected
 	console.log("A new user connected");
 
   client.on('joinGame', function(createTank) {
-    username = createTank.name;
-    console.log(username + " has joined the game");
+    uname = createTank.name;
+    console.log(uname + " has joined the game");
     client.emit('newTank');
   });
 
   client.on('joinGame', function(addUserToLeaderboard) {
-    var myobj = { username: username, score: 0 };
-    leaderboardDB.collection("Leaderboard").insertOne(myobj, function(err, res) {
-        if (err) throw err;
-        console.log(username + " added to leaderboard database");
-    });
+
   })
 
 
@@ -51,27 +42,4 @@ setInterval(function() { //Sends message to all connected users
 server.listen(5000, function() {
   console.log('Starting server on port 5000');
 
-  MongoClient.connect(dbURL1, function(err, db){
-
-    leaderboardDB = db.db("leaderboard");
-    leaderboardDB.createCollection("Leaderboard", function(err, res) {
-        if (err) throw (err);
-        console.log("Leaderboard database created");
-
-    })
-
-    console.log("Connected to leaderboard database");
-  })
-
-  MongoClient.connect(dbURL2, function(err, db){
-    var playerInfoDB = db.db("PlayerInfo");
-
-    playerInfoDB.createCollection("PlayerInfo", function(err, res) {
-        if (err) throw (err);
-        console.log("PlayerInfo database created");
-
-    })
-
-    console.log("Connected to playerInfo database");
-  })
 });
