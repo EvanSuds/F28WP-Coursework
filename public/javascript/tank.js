@@ -2,8 +2,8 @@
 function tank() {
     var socket = io();
 
-    this.xpos = 300;//Starting coordinates of (300,300)
-    this.ypos = 300;
+    this.xpos = Math.floor((Math.random()*window.innerWidth)+1);
+    this.ypos = Math.floor((Math.random()*window.innerHeight)+1); //Random starting coordinates
     this.width = 70;
     this.height = 70;
     this.score = 0; //Keep a score
