@@ -15,14 +15,15 @@ function formValidation() {
   else {
     alert("Username must be between 3 and 12 letters long");
     return false;
-  }   
+  }
 }
 
+//Changes password from hidden by spots, to shown in plain text
 function showPassword() {
   var field = document.getElementById("userPW");
   if (field.type === "password") {
     field.type = "text";
-  } 
+  }
   else {
     field.type = "password";
   }
