@@ -2,10 +2,12 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var socketIO = require('socket.io');
+const sqlite3 = require('sqlite3').verbose();
 var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
 var uname;
+var leaderboardDB;
 app.set('port', 5000); //Set the port to be 5000
 app.use(express.static(path.join(__dirname, 'public'))); //Use the public folder to find the files
 
@@ -41,5 +43,16 @@ setInterval(function() { //Sends message to all connected users
 
 server.listen(5000, function() {
   console.log('Starting server on port 5000');
+
+  leaderboardDB = new sqlite3.Database(':memory:', (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to the in-memory leaderboard database.');
+
+});
+
+
+
 
 });
