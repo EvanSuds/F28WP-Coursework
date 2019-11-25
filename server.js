@@ -8,6 +8,7 @@ var server = http.Server(app);
 var io = socketIO(server);
 var uname;
 var leaderboardDB;
+var playerInfoDB;
 app.set('port', 5000); //Set the port to be 5000
 app.use(express.static(path.join(__dirname, 'public'))); //Use the public folder to find the files
 
@@ -22,9 +23,8 @@ app.get('/', function(request, response) {
 
 
 io.on('connection', function(client) { //Logs that a user has connected
-	console.log("A new user connected");
-
   client.on('joinGame', function(createTank) {
+    console.log("A new user connected");
     uname = createTank.name;
     console.log(uname + " has joined the game");
     client.emit('newTank');
@@ -49,6 +49,13 @@ server.listen(5000, function() {
     return console.error(err.message);
   }
   console.log('Connected to the in-memory leaderboard database.');
+
+  let playerInfoDB = new sqlite3.Database('./databases/playerinfo.db', (err) => {
+  if (err) {
+    console.error(err.message);
+  }
+  console.log('Connected to the player info database.');
+  });
 
 });
 
