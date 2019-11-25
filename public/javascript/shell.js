@@ -26,10 +26,10 @@ function shell(){
     }
 
     this.update = function() { //Update function
-      if(isColliding(enemyTank, playerShell) && this.firing) { //Check if the shell has collided
-        var kill = true;
-        this.firing = false; //Stop firing
-      }
+      //if(isColliding(enemyTank, playerShell) && this.firing) { //Check if the shell has collided
+        var kill = false;
+        //this.firing = false; //Stop firing
+      //}
       if(kill) {
         playerTank.kill(); //Call kill function
       }
