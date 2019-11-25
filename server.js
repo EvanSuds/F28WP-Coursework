@@ -37,6 +37,16 @@ io.on('connection', function(client) { //Logs that a user has connected
 
 });
 
+socket.on('newUser', function (user, pass) {
+
+  playerInfoDB.run(`INSERT INTO users(username, password) VALUES(?)`, [user, pass], function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+    });
+
+});
+
 setInterval(function() { //Sends message to all connected users
   io.sockets.emit('message', 'Communicating with the server!');
 }, 1000);
@@ -54,6 +64,7 @@ server.listen(5000, function() {
   if (err) {
     console.error(err.message);
   }
+  playerInfoDB.run('CREATE TABLE users(username text, password text)');
   console.log('Connected to the player info database.');
   });
 
