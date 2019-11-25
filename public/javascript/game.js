@@ -27,7 +27,7 @@ var gameCanvas = {
 }
 
 function startGame() {
-  playerTank = new tank();
+  playerTank = new tank(); //creates a new player tank
   enemyTank = new tank();
   gameCanvas.start();
   playerShell = new shell(); //Create a shell object
