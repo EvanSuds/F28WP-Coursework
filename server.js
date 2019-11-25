@@ -50,13 +50,20 @@ server.listen(5000, function() {
 
     })
 
+    var myobj = { username: "Test Username", score: 1000 };
+    leaderboardDB.collection("Leaderboard").insertOne(myobj, function(err, res) {
+        if (err) throw err;
+        console.log("1 Player Added");
+        db.close();
+    });
+
     console.log("Connected to leaderboard database");
   })
 
   MongoClient.connect(dbURL2, function(err, db){
     var playerInfoDB = db.db("PlayerInfo");
 
-    leaderboardDB.createCollection("PlayerInfo", function(err, res) {
+    playerInfoDB.createCollection("PlayerInfo", function(err, res) {
         if (err) throw (err);
         console.log("PlayerInfo database created");
 
