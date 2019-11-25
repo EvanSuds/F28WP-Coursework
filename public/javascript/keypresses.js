@@ -1,6 +1,7 @@
 //Add event listener for key presses
 document.addEventListener("keydown", keyDown);
-
+keyPressTime = Date.now();
+buffer = [];
  function keyDown(e){
 /* Assign variable based on which key was pressed
 * Uses a switch case and the ASCII code of the key press to determine
@@ -10,6 +11,10 @@ document.addEventListener("keydown", keyDown);
 * For the projectile angle, q and e is used. This rotates the angle around by
 * 2 degrees every keypress.
 */
+
+  currentTime = Date.now();
+  if(currentTime - keyPressTime > 1000){
+    buffer = [];}
    var keyCode = e.keyCode;
      switch(keyCode) {
        case 65: //A
@@ -49,6 +54,9 @@ document.addEventListener("keydown", keyDown);
           playerShell.angle+=2;
           //Update angle in HTML table
           document.getElementById("tankAngle").innerHTML = (playerShell.angle + 90) + " degree(s)";
+          buffer.push(key);
+          keyPressTime = currentTime;
           break;
-     }
+        }
+    
 }
