@@ -11,18 +11,19 @@ function formValidation() {
       alert("Input must be letters and numbers only");
       return false;
     }
+  }
   else {
     alert("Username must be between 3 and 12 letters long");
     return false;
-  }
-
+  }   
 }
 
 function showPassword() {
   var field = document.getElementById("userPW");
   if (field.type === "password") {
     field.type = "text";
-  } else {
+  } 
+  else {
     field.type = "password";
   }
 }
