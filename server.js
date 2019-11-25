@@ -22,9 +22,8 @@ app.get('/', function(request, response) {
 
 
 io.on('connection', function(client) { //Logs that a user has connected
-	console.log("A new user connected");
-
   client.on('joinGame', function(createTank) {
+    console.log("A new user connected");
     uname = createTank.name;
     console.log(uname + " has joined the game");
     client.emit('newTank');
