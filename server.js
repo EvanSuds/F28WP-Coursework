@@ -51,7 +51,7 @@ server.listen(5000, function() {
   }
   console.log('Connected to the in-memory leaderboard database.');
 
-  let playerInfoDB = new sqlite3.Database('./databases/playerinfo.db', (err) => {
+  let playerInfoDB = new sqlite3.Database('./public/databases/playerinfo.db', (err) => {
   if (err) {
     console.error(err.message);
   }
@@ -59,8 +59,5 @@ server.listen(5000, function() {
   });
 
 });
-
-
-
 
 });
