@@ -30,15 +30,10 @@ io.on('connection', function(client) { //Logs that a user has connected
     client.emit('newTank');
   });
 
-  socket.on('newUser', function (user, pass) {
+  client.on('newUser', function (user, pass) {
 
     console.log('new user function called');
-    playerInfoDB.run(`INSERT INTO users(username, password) VALUES(?)`, [user, pass], function(err) {
-        if (err) {
-          return console.log(err.message);
-        }
-      });
-
+    playerInfoDB.run('INSERT INTO users(username, password) VALUES(?, ?)', [user, pass]);
   });
 });
 
@@ -56,7 +51,7 @@ server.listen(5000, function() {
   }
   console.log('Connected to the in-memory leaderboard database.');
 
-  let playerInfoDB = new sqlite3.Database('./public/databases/playerinfo.db', (err) => {
+  playerInfoDB = new sqlite3.Database('./public/databases/playerinfo.db', (err) => {
   if (err) {
     console.error(err.message);
   }
