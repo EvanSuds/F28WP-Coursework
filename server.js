@@ -51,4 +51,8 @@ server.listen(5000, function() {
   playerInfoDB.run('CREATE TABLE if not exists users(username text, password text)');
   console.log('Connected to the player info database.');
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01a90e9f61780f612b304ffef72de196db60c9b4
 });
