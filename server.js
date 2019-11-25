@@ -8,6 +8,8 @@ var io = socketIO(server);
 app.set('port', 5000); //Set the port to be 5000
 app.use(express.static(path.join(__dirname, 'public'))); //Use the public folder to find the files
 
+var MongoClient = require('mongodb').MongoClient;
+var dbURL = 'mongodb://localhost/playerInfo'
 /*
 * Open the index.html file first as it contains links to all the other html, css and js files
 * It is stored in the public directory like all the other files but not in a subfolder.
@@ -25,6 +27,9 @@ io.on('connection', function(client) { //Logs that a user has connected
     console.log(createTank.name + " has joined the game");
     client.emit('newTank');
   });
+
+
+
 });
 
 setInterval(function() { //Sends message to all connected users
@@ -33,4 +38,16 @@ setInterval(function() { //Sends message to all connected users
 
 server.listen(5000, function() {
   console.log('Starting server on port 5000');
+
+  MongoClient.connect(dbURL, function(err, db){
+    var leaderboardDB = db.db("leaderboard");
+
+    leaderboardDB.createCollection("Leaderboard", function(err, res) {
+        if (err) throw (err);
+        console.log("Leaderboard database created");
+
+    })
+
+    console.log("Connected to leaderboard database");
+  })
 });
