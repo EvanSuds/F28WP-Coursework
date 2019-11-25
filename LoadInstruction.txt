@@ -1,0 +1,5 @@
+Install NodeJS
+Open cmd
+Change directory to game files
+Type node server.js
+Then go to localhost:5000
