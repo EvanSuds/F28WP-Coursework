@@ -5,6 +5,7 @@ var socketIO = require('socket.io');
 var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
+var leaderboardDB;
 app.set('port', 5000); //Set the port to be 5000
 app.use(express.static(path.join(__dirname, 'public'))); //Use the public folder to find the files
 
@@ -30,6 +31,11 @@ io.on('connection', function(client) { //Logs that a user has connected
     client.emit('newTank');
   });
 
+  var myobj = { username: "Test Username", score: 1000 };
+  leaderboardDB.collection("Leaderboard").insertOne(myobj, function(err, res) {
+      if (err) throw err;
+      console.log("1 Player Added");
+  });
 
 
 });
@@ -42,20 +48,13 @@ server.listen(5000, function() {
   console.log('Starting server on port 5000');
 
   MongoClient.connect(dbURL1, function(err, db){
-    var leaderboardDB = db.db("leaderboard");
 
+    leaderboardDB = db.db("leaderboard");
     leaderboardDB.createCollection("Leaderboard", function(err, res) {
         if (err) throw (err);
         console.log("Leaderboard database created");
 
     })
-
-    var myobj = { username: "Test Username", score: 1000 };
-    leaderboardDB.collection("Leaderboard").insertOne(myobj, function(err, res) {
-        if (err) throw err;
-        console.log("1 Player Added");
-        db.close();
-    });
 
     console.log("Connected to leaderboard database");
   })
