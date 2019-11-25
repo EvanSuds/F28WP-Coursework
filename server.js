@@ -7,7 +7,6 @@ var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
 var uname;
-var leaderboardDB;
 var playerInfoDB;
 app.set('port', 5000); //Set the port to be 5000
 app.use(express.static(path.join(__dirname, 'public'))); //Use the public folder to find the files
@@ -45,17 +44,11 @@ setInterval(function() { //Sends message to all connected users
 server.listen(5000, function() {
   console.log('Starting server on port 5000');
 
-  leaderboardDB = new sqlite3.Database(':memory:', (err) => {
-  if (err) {
-    return console.error(err.message);
-  }
-  console.log('Connected to the in-memory leaderboard database.');
-
   playerInfoDB = new sqlite3.Database('./public/databases/playerinfo.db', (err) => {
   if (err) {
     console.error(err.message);
   }
-  playerInfoDB.run('CREATE TABLE if not exists users(username text, password text)');
+  playerInfoDB.run('CREATE TABLE if not exists users(username text, password text, )');
   console.log('Connected to the player info database.');
   });
 
