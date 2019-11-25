@@ -5,6 +5,7 @@
   <meta charset ="utf-8">
   <meta name = "description" content= "HTML5, CSS3, javaScript">
   <script src="javascript/login.js"></script>
+  <script src="javascript/signup.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel='stylesheet' href='css/styles.css'/>
   <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
@@ -16,7 +17,7 @@
   <!--sets up login form-->
   <form name = "usernameForm" onsubmit = "return formValidation()" action = "game.html" method = "post">
     Username:<br>
-  <input type="text" name="username" value="Player1">
+  <input type="text" name="username" value="Player1" id="userName">
   <br>
     Password:<br>
   <input type="password" name="password" id="userPW">
@@ -28,7 +29,7 @@
   </div>
   <br>
   <input type="submit" value="Submit">
-  <input type="button" value="Sign Up" onclick="signup.js">
+  <input type="button" value="Sign Up" onclick="SignUp()">
 </form>
 
 
