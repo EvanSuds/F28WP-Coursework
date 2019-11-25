@@ -31,13 +31,15 @@ io.on('connection', function(client) { //Logs that a user has connected
     username = createTank.name;
     console.log(username + " has joined the game");
     client.emit('newTank');
+  });
+
+  client.on('joinGame', function(addUserToLeaderboard) {
     var myobj = { username: username, score: 0 };
     leaderboardDB.collection("Leaderboard").insertOne(myobj, function(err, res) {
         if (err) throw err;
         console.log(username + " added to leaderboard database");
     });
-    
-  });
+  })
 
 
 });
