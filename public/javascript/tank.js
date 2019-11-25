@@ -1,5 +1,7 @@
 //Constructor for the tank
 function tank() {
+    var socket = io();
+
     this.xpos = 300;//Starting coordinates of (300,300)
     this.ypos = 300;
     this.width = 70;
